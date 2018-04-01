@@ -13,14 +13,14 @@
 		 	<tr>
 		 		<th>#</th>
 		 		<th>Câu hỏi</th>
-		 		<th>Trả lời</th>
+		 		<th class="reponsive600 reponsive900">Trả lời</th>
 		 		<th>Tùy chọn</th>
 		 	</tr>
 		 	@foreach($ques as $item)
 		 	<tr>
 		 		<td>{{$item->id}}</td>
 		 		<td class="mainListQues">{{$item->ques}}</td>
-		 		<td class="mainListAns">
+		 		<td class="mainListAns reponsive600 reponsive900">
 		 			{!!$item->ans!!}
 				</td>
 		 		<td class="mainListOption">

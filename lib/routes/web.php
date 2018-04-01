@@ -140,9 +140,10 @@ Route::group(['namespace'=>'Admin'],function(){
 
 		Route::group(['prefix'=>'order'],function(){
 			Route::get('/','OrderController@getList');
-			Route::get('edit/{id}','OrderController@getEdit');
-			Route::post('edit/{id}','OrderController@postEdit');
-			Route::get('delete/{id}','OrderController@getDelete');
+			Route::get('detail/{id}','OrderController@getDetail');
+			Route::get('yes/{id}','OrderController@yesOrder');
+			Route::get('no/{id}','OrderController@noOrder');
+			
 		});
 		Route::group(['prefix'=>'news'],function(){
 			Route::get('/','NewsController@getList');
@@ -160,5 +161,16 @@ Route::group(['namespace'=>'Admin'],function(){
 			Route::post('edit/{id}','QuesController@postEdit');
 			Route::get('delete/{id}','QuesController@getDelete');
 		});
+	});
+});
+Route::group(['namespace'=>'Frontend'],function(){
+	Route::group(['prefix'=>'cart'],function(){
+		Route::get('add/{id}','CartController@getAddCart');
+		Route::get('show', 'CartController@getShowCart');
+		Route::get('delete/{id}', 'CartController@getDeleteCart');
+		Route::get('update', 'CartController@getUpdateCart');
+		Route::post('show', 'CartController@postComplete');
+		Route::get('complete', 'CartController@getComplete');
+
 	});
 });

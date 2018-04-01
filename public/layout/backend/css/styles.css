@@ -63,3 +63,28 @@ header{
 .mainTitle{
 	margin: 30px 10px;
 }
+
+
+
+.orderTable tr td a{
+	text-decoration: none;
+	color: #000;
+}
+.orderDetailTitle{
+	font-weight: bold;
+
+}
+.tableOption{
+	width: 200px;
+}
+@media screen and (max-width: 900px) {
+    .reponsive900 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .reponsive600 {
+        display: none;
+    }
+}

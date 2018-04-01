@@ -20,12 +20,13 @@ class Order extends Migration
             $table->string('mst');
             $table->string('cmnd');
             $table->string('adress');
-            $table->integer('phone');
+            $table->string('phone');
             $table->integer('gender');
             $table->string('couselor');
             $table->string('note');
-            $table->integer('total_price');
+            $table->string('total_price');
             $table->integer('type');
+            $table->integer('status');
             $table->timestamps();
         });
     }

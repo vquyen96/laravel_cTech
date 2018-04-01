@@ -12,8 +12,8 @@
 		 	<tr>
 		 		<th>#</th>
 		 		<th>Ảnh</th>
-		 		<th>Tiêu đề</th>
-		 		<th>Tag</th>
+		 		<th class="reponsive900">Tiêu đề</th>
+		 		<th class="">Tag</th>
 		 		<th>Tùy chọn</th>
 		 	</tr>
 		 	@foreach($news as $item)
@@ -22,8 +22,8 @@
 		 		<td class="mainListImg">
 		 			<img src="{{asset('lib/storage/app/news/'.$item->img)}}" class="thumbnail" alt="">
 		 		</td>
-		 		<td class="mainListTitle">{{$item->title}}</td>
-		 		<td class="mainListTag"><a href="">{{$item->tag}}</a></td>
+		 		<td class="mainListTitle reponsive900">{{$item->title}}</td>
+		 		<td class="mainListTag "><a href="">{{$item->tag}}</a></td>
 		 		<td class="mainListOption">
 		 			<a href="{{asset('admin/news/edit/'.$item->id)}}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
 					<a onclick="return confirm('Bạn có chắc chắn muốn xóa!')" href="{{asset('admin/news/delete/'.$item->id)}}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>

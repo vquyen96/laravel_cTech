@@ -6,10 +6,20 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Price;
 use App\Models\Hosting;
+use App\Models\Email;
+use App\Models\Sever;
+use App\Models\Ads;
+use App\Models\Software;
+use App\Models\Design;
+use App\Models\Bonus;
+
+use App\Models\Order;
+use App\Models\OrderDetail;
 use Cart;
 class CartController extends Controller
 {
     public function getAddCart($id){
+
     	$price = Price::find($id);
     	switch ($price->cate_id) {
     		case 1:
@@ -37,13 +47,15 @@ class CartController extends Controller
     		default:
     			# code...
     			break;
-    	}
-    	Cart::add(['id'=>$id, 'name'=>$product->name, 'qty'=>1, 'price'=>$price->price, 'options'=>['time'=>$price->time]);
+    	};
+    	Cart::add(['id'=>$id, 'name'=>$product->name, 'qty'=>1, 'price'=>$price->price, 'options'=>['time'=>$price->time]]);
 
-    	return redirect('admin/order');
+    	return redirect('cart/show');
     }
     public function getShowCart(){
+    	// Cart::destroy();
         // dd(Cart::content());
+        $data['cateleft'] = 'order';
     	$data['total'] = Cart::total();
     	$data['items'] = Cart::content();
     	return view('frontend.cart', $data);
@@ -62,23 +74,40 @@ class CartController extends Controller
 
     }
     public function postComplete(Request $request){
-    	$data['info'] = $request->all();
-    	$email = $request->email;
+    	$order = new Order;
+        $order->name = $request->name;
+        $order->email = $request->email;
+        $order->mst = $request->mst;
+        $order->cmnd = $request->cmnd;
+        $order->adress = $request->adress;
+        $order->phone = $request->phone;
+        $order->gender = $request->gender;
+        $order->couselor = $request->couselor;
+        $order->note = $request->note;
+        $order->type = $request->type;
+        $order->status = 1;
+        $order->total_price = Cart::total();
+        // dd($order);
+        $order->save();
     	$data['cart'] = Cart::content();
     	$data['total'] = Cart::total();
-        // return view('frontend.email', $data);
-        // dd($data);
-    	Mail::send('frontend.email', $data, function($message) use ($email){
-    		$message->from('vquyenaaa@gmail.com', 'VietProShop');
-    		$message->to($email, $email)->subject('Welcome!');
-    		// $message->cc('thongminh.depzai@gmail.com', 'boss');
-    		$message->subject('Xác nhận hóa đơn mua hàng');
-    	});
-        
+    	sleep(2);
+    	$order_id = $order->id;
+
+        foreach ($data['cart'] as $item) {
+        	$orderdetail = new OrderDetail;
+        	$orderdetail->name = $item->name;
+	        $orderdetail->qty = $item->qty;
+	        $orderdetail->price_id = $item->id;
+	        $orderdetail->order_id = $order->id;
+	        $orderdetail->save();
+        }
     	Cart::destroy();
-    	return redirect('complete');
+    	
+    	return redirect('cart/complete');
     }
     public function getComplete(){
-    	return view('frontend.complete');
+    	$data['cateleft'] = 'order';
+    	return view('frontend.complete',$data);
     }
 }

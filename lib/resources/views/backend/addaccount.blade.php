@@ -35,7 +35,7 @@
 			</div>
 			<div class="form-group">
 				<input type="submit" name="" class="btn btn-primary" value="Thêm mới">
-				<a href="{{asset('admin/products/hosting')}}" class="btn btn-warning">Quay lại</a>
+				<a href="{{asset('admin/account')}}" class="btn btn-warning">Quay lại</a>
 			</div>
 			{{csrf_field()}}
 		</form>

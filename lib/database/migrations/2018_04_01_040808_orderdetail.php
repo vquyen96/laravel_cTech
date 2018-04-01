@@ -15,6 +15,7 @@ class Orderdetail extends Migration
     {
         Schema::create('orderdetail', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->integer('qty');
             $table->integer('price_id')->unsigned();
             $table->foreign('price_id')
