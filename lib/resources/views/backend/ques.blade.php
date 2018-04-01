@@ -21,7 +21,10 @@
 		 		<td>{{$item->id}}</td>
 		 		<td class="mainListQues">{{$item->ques}}</td>
 		 		<td class="mainListAns reponsive600 reponsive900">
-		 			{!!$item->ans!!}
+		 			<div class="tableContent">
+		 				{!!$item->ans!!}
+		 			</div>
+		 			
 				</td>
 		 		<td class="mainListOption">
 		 			<a href="{{asset('admin/ques/edit/'.$item->id)}}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>

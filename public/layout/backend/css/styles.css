@@ -64,7 +64,10 @@ header{
 	margin: 30px 10px;
 }
 
-
+.tableContent{
+	max-height: 150px;
+	overflow: auto;
+}
 
 .orderTable tr td a{
 	text-decoration: none;
