@@ -11,18 +11,6 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $data = [
-        	[
-        		'email'=>'admin@cphonevn.com',
-        		'password'=>bcrypt('admin'),
-        		'level'=>1
-        	],
-        	[
-        		'email'=>'quyendo@cphonevn.com',
-        		'password'=>bcrypt('Cphone123'),
-        		'level'=>2
-        	],
-        ];
-        DB::table('users')->insert($data);
+        
     }
 }
